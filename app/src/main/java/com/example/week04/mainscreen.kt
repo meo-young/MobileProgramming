@@ -6,7 +6,9 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material3.Badge
@@ -96,10 +98,15 @@ fun MainScreen(){
     var counter3 by remember {
         mutableStateOf(0)
     }
+    var counter4 by remember {
+        mutableStateOf(0)
+    }
+
+    val scrollState = rememberScrollState()
 
     Column(
-        modifier = Modifier.fillMaxSize(),
-        horizontalAlignment = Alignment.CenterHorizontally
+        modifier = Modifier.fillMaxSize().verticalScroll(scrollState),
+        horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         ImageWithSlot(img = R.drawable.img1) {
             ButtonWithIcon(counter = counter1) {
@@ -114,6 +121,11 @@ fun MainScreen(){
         ImageWithSlot(img = R.drawable.img3) {
             ButtonWithIcon(counter = counter3) {
                 counter3++
+            }
+        }
+        ImageWithSlot(img = R.drawable.img3) {
+            ButtonWithIcon(counter = counter4) {
+                counter4++
             }
         }
     }

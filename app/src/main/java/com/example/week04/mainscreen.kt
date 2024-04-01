@@ -29,11 +29,25 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import coil.compose.AsyncImage
 
 @Composable
 fun ImageWithSlot(img:Int, slotBtn:@Composable ()->Unit){
     Image(
         painter = painterResource(id = img),
+        contentDescription = "이미지",
+        contentScale = ContentScale.Crop,
+        modifier = Modifier
+            .size(200.dp)
+            .clip(CircleShape)
+    )
+    slotBtn()
+}
+
+@Composable
+fun ImageWithSlot(img:String, slotBtn:@Composable ()->Unit){
+    AsyncImage(
+        model = img,
         contentDescription = "이미지",
         contentScale = ContentScale.Crop,
         modifier = Modifier
@@ -101,6 +115,9 @@ fun MainScreen(){
     var counter4 by remember {
         mutableStateOf(0)
     }
+    var counter5 by remember {
+        mutableStateOf(0)
+    }
 
     val scrollState = rememberScrollState()
 
@@ -128,5 +145,11 @@ fun MainScreen(){
                 counter4++
             }
         }
+        ImageWithSlot(img = "https://i.namu.wiki/i/7IJj6iEgr4a41vfl5vOyUGtHAoC2ZQZABnuNua26JeAXjThMcrjJuul8E0CWmAfVB_m_8e535REXuU47IxU2Cg.webp") {
+            ButtonWithIcon(counter = counter5) {
+                counter5++
+            }
+        }
+
     }
 }

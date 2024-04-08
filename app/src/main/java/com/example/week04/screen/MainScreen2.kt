@@ -15,7 +15,7 @@ fun MainSceen2() {
 
     if (dataList.isEmpty()) {
         dataList.apply {
-            repeat(10) {
+            repeat(100) {
                 add((it + 1).toString())
             }
         }

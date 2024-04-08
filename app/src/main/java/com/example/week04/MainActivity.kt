@@ -3,10 +3,15 @@ package com.example.week04
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
+import com.example.lazycomposable.screen.MainSceen2
+import com.example.week04.screen.MainSceen1
+import com.example.week04.screen.RandomColorButton
+import com.example.week04.screen.RandomColorButton2
 import com.example.week04.ui.theme.Week04Theme
 
 class MainActivity : ComponentActivity() {
@@ -19,7 +24,11 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    MainScreen()
+                    //MainScreen()
+                    Column {
+                        MainSceen2()
+                    }
+
                 }
             }
         }

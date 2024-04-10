@@ -7,9 +7,11 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
 import androidx.compose.ui.Modifier
 import com.example.lazycomposable.screen.MainSceen2
 import com.example.week04.screen.MainSceen1
+import com.example.week04.screen.MainScreen7
 import com.example.week04.screen.RandomColorButton
 import com.example.week04.screen.RandomColorButton2
 import com.example.week04.ui.theme.Week04Theme
@@ -26,7 +28,8 @@ class MainActivity : ComponentActivity() {
                 ) {
                     //MainScreen()
                     Column {
-                        MainSceen2()
+                        Text(text="202011255 김대영")
+                        MainScreen7()
                     }
 
                 }

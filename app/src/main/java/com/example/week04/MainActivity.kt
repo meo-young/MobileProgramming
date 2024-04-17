@@ -11,6 +11,7 @@ import androidx.compose.material3.Text
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.rememberNavController
 import com.example.lazycomposable.screen.MainSceen2
+import com.example.week04.example2.LoginNavGraph
 import com.example.week04.screen.MainSceen1
 import com.example.week04.screen.MainScreen7
 import com.example.week04.screen.RandomColorButton
@@ -32,7 +33,7 @@ class MainActivity : ComponentActivity() {
                     //MainScreen()
                     Column {
                         val navController = rememberNavController()
-                        NavGraph1(navController)
+                        LoginNavGraph(navController)
                     }
 
                 }

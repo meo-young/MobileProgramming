@@ -21,7 +21,6 @@ import androidx.navigation.NavHostController
 
 @Composable
 fun Register(navController: NavHostController, userID: String?, userPasswd: String?) {
-
     var userID by remember{
         mutableStateOf(userID ?: "")
     }

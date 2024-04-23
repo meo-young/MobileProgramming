@@ -22,7 +22,6 @@ import androidx.navigation.NavHostController
 
 @Composable
 fun LoginScreen(navController: NavHostController) {
-
     val userid = "greenjoa"
     val userpasswd = "1234"
 
@@ -39,7 +38,6 @@ fun LoginScreen(navController: NavHostController) {
     Column(modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally) {
-
 
         Text(text="Login Screen",
             fontSize = 40.sp,

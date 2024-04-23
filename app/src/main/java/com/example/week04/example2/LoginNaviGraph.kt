@@ -17,14 +17,13 @@ sealed class Routes(val route: String) {
 
 @Composable
 fun LoginNavGraph(navController: NavHostController) {
-
-    NavHost(navController = navController, startDestination = Routes.Login.route) { //owner를 지정하지 않으면 backstackentry가 자동으로 지정되므로, activity를 owner로 지정하는 과정 필요.
-
+    NavHost(navController = navController, startDestination = "Login") { //owner를 지정하지 않으면 backstackentry가 자동으로 지정되므로, activity를 owner로 지정하는 과정 필요.
         composable(route = Routes.Login.route) {
             LoginScreen(navController)
         }
 
-        composable(route = Routes.Welcome.route + "/{userID}",
+        composable(
+            route = Routes.Welcome.route + "/{userID}",
             arguments = listOf(
                 navArgument(name = "userID") {
                     type = NavType.StringType

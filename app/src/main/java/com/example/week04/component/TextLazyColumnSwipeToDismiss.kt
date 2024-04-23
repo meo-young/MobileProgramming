@@ -52,7 +52,8 @@ fun TextLazyColumnSwipeToDismiss(dataList: MutableList<String>, modifier: Modifi
             itemsIndexed(
                 items = dataList,
                 key = { index, item -> item.hashCode() }
-            ) { index, item ->
+            ) {
+              index, item ->
                 val state = rememberDismissState(
                     confirmValueChange = {
                         if (it == DismissValue.DismissedToStart) {
@@ -74,11 +75,14 @@ fun TextLazyColumnSwipeToDismiss(dataList: MutableList<String>, modifier: Modifi
                                 .fillMaxSize()
                                 .background(color)
                         ) {
-                            Icon(
-                                imageVector = Icons.Default.Delete,
-                                contentDescription = "Delete Icon",
-                                modifier = Modifier.align(Alignment.CenterEnd)
-                            )
+                            if(state.dismissDirection == DismissDirection.EndToStart){
+                                Icon(
+                                    imageVector = Icons.Default.Delete,
+                                    contentDescription = "Delete Icon",
+                                    modifier = Modifier.align(Alignment.CenterEnd)
+                                )
+                            }
+
                         }
                     },
                     dismissContent = {

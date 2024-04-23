@@ -5,6 +5,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -17,6 +18,7 @@ import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material3.Badge
 import androidx.compose.material3.BadgedBox
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
@@ -81,6 +83,7 @@ fun ButtonWithIcon(counter : Int, onClick:()->Unit){
             contentDescription = null,
             tint = Color.Red
         )
+        Spacer(Modifier.size(ButtonDefaults.IconSpacing))
         if(counter > 0){
             Text("$counter")
         }
@@ -133,7 +136,7 @@ data class ImgData2(var img:Int, var counter:Int){
 
 class ImgViewModel : ViewModel(){
     var imglist = mutableStateListOf<ImgData2>()
-    private set
+        private set
     init{
         imglist.add(ImgData2(R.drawable.img1,10))
         imglist.add(ImgData2(R.drawable.img2,20))
@@ -207,7 +210,7 @@ fun MainScreen(imgViewModel: ImgViewModel = viewModel()){
 
     }
 
-    LazyColumn(
+    /*LazyColumn(
         contentPadding = PaddingValues(vertical = 20.dp),
     ) {
         item {
@@ -219,5 +222,5 @@ fun MainScreen(imgViewModel: ImgViewModel = viewModel()){
         items(50) {index ->
             Text(text = "First Item : $index")
         }
-    }
+    }*/
 }

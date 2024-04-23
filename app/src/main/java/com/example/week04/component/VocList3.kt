@@ -49,14 +49,7 @@ fun VocList3(vocDataViewModel: VocDataViewModel = viewModel()){
     var tts : TextToSpeech? by rememberSaveable {
         mutableStateOf(null)
     }
-    val animateState = rememberLazyListState()
-    val cScope = rememberCoroutineScope()
 
-    val showBtn by remember {
-        derivedStateOf {
-            animateState.firstVisibleItemIndex > 0
-        }
-    }
     DisposableEffect(LocalLifecycleOwner.current) {
         tts = TextToSpeech(context){status ->
             if(status == TextToSpeech.SUCCESS){
@@ -75,12 +68,23 @@ fun VocList3(vocDataViewModel: VocDataViewModel = viewModel()){
             tts?.speak(vocData.word,TextToSpeech.QUEUE_ADD,null,null)
         }
     }
+
+    val animateState = rememberLazyListState()
+    val cScope = rememberCoroutineScope()
+
+    val showBtn by remember {
+        derivedStateOf {
+            animateState.firstVisibleItemIndex > 0
+        }
+    }
     Box{
         LazyColumn(
             state = animateState
         ) {
             itemsIndexed(vocDataViewModel.vocList,
-                key = {_,voc -> voc.word}){ index : Int, item :VocData-> // key가 단어로 되어있기 때문에 단어가 중복될 수 없음
+                key = {_,voc -> voc.word} // key가 단어로 되어있기 때문에 단어가 중복될 수 없음
+            ){
+                index : Int, item :VocData->
                 val state = rememberDismissState( //swipe를 위해서는 상태 저장을 하는 변수 선언이 필요
                     confirmValueChange = {//원하는 방향으로 event가 발생했을 때 호출
                         if(it == DismissValue.DismissedToStart){ //왼쪽으로 swipe 하는 경우

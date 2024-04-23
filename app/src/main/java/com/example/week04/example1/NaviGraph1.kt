@@ -21,9 +21,7 @@ sealed class Routes(val route:String){
 @SuppressLint("RestrictedApi", "StateFlowValueCalledInComposition")
 @Composable
 fun NavGraph1(navController: NavHostController) {
-
     NavHost(navController=navController, startDestination = "Home"){
-
         composable(route=Routes.Home.route){
             navController.currentBackStack.value.forEachIndexed{ index, navBackStackEntry ->
                 Log.d("backstack", "$index : ${navBackStackEntry.destination.route}")
@@ -41,7 +39,6 @@ fun NavGraph1(navController: NavHostController) {
 
         composable(route=Routes.C.route){
             ScreenC1(navController)
-
         }
 
         composable(route=Routes.D.route){

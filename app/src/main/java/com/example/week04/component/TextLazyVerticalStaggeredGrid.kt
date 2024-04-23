@@ -16,8 +16,8 @@ import androidx.compose.ui.unit.dp
 @Composable
 fun TextLazyVerticalStaggeredGrid(dataList: List<String>, modifier: Modifier = Modifier) {
     LazyVerticalStaggeredGrid(
-        //columns = StaggeredGridCells.Adaptive(100.dp),
-        columns = StaggeredGridCells.Fixed(2),
+        columns = StaggeredGridCells.Adaptive(100.dp),
+        //columns = StaggeredGridCells.Fixed(2),
         verticalItemSpacing = 10.dp,
         horizontalArrangement = Arrangement.spacedBy(10.dp),
         contentPadding = PaddingValues(10.dp),

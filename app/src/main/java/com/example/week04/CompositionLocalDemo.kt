@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.compositionLocalOf
 import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -20,9 +21,9 @@ val LocalColor = staticCompositionLocalOf { Color(0xFFffdbcf) }
 fun Composable1() {
 
     var color = if(isSystemInDarkTheme()){
-        Color(0xFFa08d87)
+        Color(0xFFa01d57)
     }else{
-        Color(0xFFffdbcf)
+        Color(0xF2f24b2f)
     }
     Column {
         Composable2()

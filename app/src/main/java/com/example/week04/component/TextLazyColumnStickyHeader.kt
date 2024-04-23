@@ -44,7 +44,9 @@ fun TextLazyColumnStickyHeader(dataList: MutableList<String>, modifier: Modifier
             items(items = models) { item ->
                 TextCell(text = item, Modifier.background(Color.Cyan))
             }
+
         }
+
     }
 }
 

@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Week04</string>
     <string name="maintitle">영어단어장</string>
+    <string name="hello_world">hello</string>
 </resources>

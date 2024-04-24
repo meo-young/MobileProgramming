@@ -10,11 +10,14 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.ui.Modifier
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.rememberNavController
 import com.example.lazycomposable.screen.MainSceen2
 import com.example.week04.component.VocList
 import com.example.week04.example2.LoginNavGraph
 import com.example.week04.model.VocDataViewModel
+import com.example.week04.model.VocDataViewModel2
+import com.example.week04.practice.PracticeNavi
 import com.example.week04.screen.MainSceen1
 import com.example.week04.screen.MainScreen7
 import com.example.week04.screen.RandomColorButton
@@ -38,15 +41,16 @@ class MainActivity : ComponentActivity() {
                 ) {
 
                     //AnnotatedClickableText()
-                   /* val context = application
-                    VocList(VocDataViewModel(context))*/
+                    val context = application
+                    //val viewModel = viewModel<VocDataViewModel2>()
+                    /*VocList(VocDataViewModel(context))*/
                     /*Column {
                         val navController = rememberNavController()
                         NavGraph1(navController)
                     }*/
                     Column {
                         val navController = rememberNavController()
-                        LoginNavGraph(navController)
+                        PracticeNavi(navController, VocDataViewModel(context))
                     }
 
                 }

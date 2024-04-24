@@ -2,36 +2,8 @@
 <project version="4">
   <component name="deploymentTargetDropDown">
     <value>
-      <entry key="Closet">
-        <State />
-      </entry>
-      <entry key="ScrollToTopButtonPreview">
-        <State />
-      </entry>
-      <entry key="TextLazyColumnStickyHeaderPreview">
-        <State />
-      </entry>
-      <entry key="TextLazyColumnSwipeToDismissPreview">
-        <State />
-      </entry>
-      <entry key="TextLazyGridPreview">
-        <State />
-      </entry>
       <entry key="app">
-        <State>
-          <targetSelectedWithDropDown>
-            <Target>
-              <type value="QUICK_BOOT_TARGET" />
-              <deviceKey>
-                <Key>
-                  <type value="VIRTUAL_DEVICE_PATH" />
-                  <value value="C:\Users\eotn2\.android\avd\Pixel_3a_API_34_extension_level_7_x86_64.avd" />
-                </Key>
-              </deviceKey>
-            </Target>
-          </targetSelectedWithDropDown>
-          <timeTargetWasSelectedWithDropDown value="2024-04-22T02:51:25.928160600Z" />
-        </State>
+        <State />
       </entry>
     </value>
   </component>

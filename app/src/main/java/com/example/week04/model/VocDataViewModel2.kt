@@ -3,26 +3,25 @@ package com.example.week04.model
 import android.app.Application
 import android.util.Log
 import androidx.compose.runtime.mutableStateListOf
+import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.ViewModel
 import com.example.week04.R
+import java.io.File
 import java.util.Scanner
 
-class VocDataViewModel(private val application: Application) : AndroidViewModel(application) {
-
+class VocDataViewModel2 : ViewModel() {
     var vocList = mutableStateListOf<VocData>()
         private set
     init{
         vocList.addAll(readWordFile())
     }
-
     private fun readWordFile():MutableList<VocData>{
-        Log.d("visit", "1")
-        val context = application.applicationContext
-        val scan = Scanner(context.resources.openRawResource(R.raw.word))
+        val scan = Scanner(File("C:\\Users\\eotn2\\MobileProgramming\\app\\src\\main\\res\\raw\\word.txt"))
         val wordList = mutableListOf<VocData>()
         while(scan.hasNextLine()){
             val word = scan.nextLine()
-            Log.d("word2", word)
+            Log.d("word", word)
             val meaning = scan.nextLine()
             wordList.add(VocData(word, meaning))
         }

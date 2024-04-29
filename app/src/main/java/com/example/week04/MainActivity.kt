@@ -15,6 +15,8 @@ import androidx.navigation.compose.rememberNavController
 import com.example.lazycomposable.screen.MainSceen2
 import com.example.week04.component.VocList
 import com.example.week04.example2.LoginNavGraph
+import com.example.week04.example4.ScaffoldEample
+import com.example.week04.example5.MainScreen
 import com.example.week04.model.VocDataViewModel
 import com.example.week04.model.VocDataViewModel2
 import com.example.week04.practice.PracticeNavi
@@ -39,18 +41,11 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-
-                    //AnnotatedClickableText()
-                    val context = application
-                    //val viewModel = viewModel<VocDataViewModel2>()
-                    /*VocList(VocDataViewModel(context))*/
-                    /*Column {
-                        val navController = rememberNavController()
-                        NavGraph1(navController)
-                    }*/
                     Column {
-                        val navController = rememberNavController()
-                        PracticeNavi(navController, VocDataViewModel(context))
+                        /*val navController = rememberNavController()
+                        LoginNavGraph(navController = navController)*/
+                        //ScaffoldEample()
+                        MainScreen()
                     }
 
                 }

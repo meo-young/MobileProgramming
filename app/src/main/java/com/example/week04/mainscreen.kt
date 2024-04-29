@@ -149,7 +149,7 @@ class ImgViewModel : ViewModel(){
 
 val LocalImgData = compositionLocalOf<ImgData2> { error("값을 입력하세요")  }
 @Composable
-fun MainScreen(imgViewModel: ImgViewModel = viewModel()){
+fun MainScreenSlot(imgViewModel: ImgViewModel = viewModel()){
     val context = LocalContext.current
 
     val imgId = context.resources.getIdentifier(

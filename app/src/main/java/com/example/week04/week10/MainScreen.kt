@@ -81,7 +81,7 @@ fun MainScreen() {
         }
 
         // date picker dialog
-        if (showDatePicker) {
+        if (showDatePicker) { //onDismiss, confirmBtn 필수
             DatePickerDialog(
                 onDismissRequest = { showDatePicker = false },
                 confirmButton = {
@@ -147,8 +147,8 @@ fun MainScreen() {
                 }
             )
             {
-                //  TimePicker(state = timePickerState)
-                TimeInput(state = timePickerState)
+                //  TimePicker(state = timePickerState) 얘는  시계
+                TimeInput(state = timePickerState) // 시계 없는 버전
             }
         }
     }

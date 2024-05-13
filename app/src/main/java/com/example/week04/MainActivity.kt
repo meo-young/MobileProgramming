@@ -49,8 +49,10 @@ import com.example.week04.screen.RandomColorButton2
 import com.example.week04.ui.theme.Week04Theme
 import com.example.week04.week03.components.AnnotatedClickableText
 import com.example.week04.week10.InstalledAppsList
+import com.example.week04.week10.NavGraph
 import com.example.week04.week10.NotificationApp
 import com.example.week04.week10.getInstalledApps
+import com.example.week04.week11.example01.WebViewScreen
 import com.example.week07.example1.HomeScreen1
 import com.example.week07.example1.NavGraph1
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
@@ -84,7 +86,12 @@ class MainActivity : ComponentActivity() {
                         /*val apps = getInstalledApps()
                         InstalledAppsList(apps = apps)*/
 
-                        NotificationApp()
+                        //NotificationApp()
+                        
+                        /*val navController = rememberNavController() 11주차 pending intent, deeplink
+                        NavGraph(navController = navController)*/
+
+                        WebViewScreen()
                     }
 
                 }

@@ -19,7 +19,7 @@ fun makeNotification(context: Context, msg: String) {
     val notificationManager=context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
     notificationManager.createNotificationChannel(notificationChannel)
 
-    /*val notification = NotificationCompat.Builder(context, channelId)
+    val notification = NotificationCompat.Builder(context, channelId)
         .setSmallIcon(R.drawable.baseline_access_alarm_24)
         .setContentTitle("일정 알람")
         .setContentText(msg)
@@ -28,5 +28,5 @@ fun makeNotification(context: Context, msg: String) {
         .setAutoCancel(true)
         .build()
 
-    notificationManager.notify(notificationId, notification)*/ //퍼미션 추가
+    notificationManager.notify(notificationId, notification) //퍼미션 추가
 }

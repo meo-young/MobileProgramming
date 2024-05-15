@@ -27,7 +27,6 @@
             android:theme="@style/Theme.Week04">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -35,7 +34,6 @@
     <queries>
         <intent>
             <action android:name="android.intent.action.MAIN"></action>
-
         </intent>
     </queries>
 </manifest>

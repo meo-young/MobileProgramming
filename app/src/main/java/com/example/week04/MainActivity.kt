@@ -12,6 +12,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.compose.setContent
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -30,6 +31,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.core.content.ContextCompat.startActivity
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -71,14 +73,21 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
                     Column {
-                        val navController = rememberNavController()
+                        //Text("202011255 김대영")
+                        Image(
+                            painter = painterResource(id = R.drawable.aiku1),
+                            contentDescription = null,
+                            modifier = Modifier.fillMaxSize()
+                        )
+                        
+                        //val navController = rememberNavController()
                         /*LoginNavGraph(navController = navController)*/
                         //ScaffoldEample()
 
                         //MainScreen(navController)
                         //ShowIntent3()
-                        val apps = getInstalledApps()
-                        InstalledAppsList(apps = apps)
+                        /*val apps = getInstalledApps()
+                        InstalledAppsList(apps = apps)*/
                     }
 
                 }

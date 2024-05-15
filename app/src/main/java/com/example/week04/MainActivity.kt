@@ -55,6 +55,7 @@ import com.example.week04.week10.NavGraph
 import com.example.week04.week10.NotificationApp
 import com.example.week04.week10.getInstalledApps
 import com.example.week04.week11.example01.WebViewScreen
+import com.example.week04.week11.example02.FetchWebPage
 import com.example.week07.example1.HomeScreen1
 import com.example.week07.example1.NavGraph1
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
@@ -77,11 +78,11 @@ class MainActivity : ComponentActivity() {
                 ) {
                     Column {
                         //Text("202011255 김대영")
-                        Image(
+                        /*Image(
                             painter = painterResource(id = R.drawable.aiku1),
                             contentDescription = null,
                             modifier = Modifier.fillMaxSize()
-                        )
+                        )*/
                         
 
                         //val navController = rememberNavController()
@@ -103,6 +104,7 @@ class MainActivity : ComponentActivity() {
                         NavGraph(navController = navController)*/
 
                         WebViewScreen()
+                        //FetchWebPage()
                     }
 
                 }

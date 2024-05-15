@@ -28,6 +28,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.io.BufferedReader
@@ -53,29 +54,30 @@ fun FetchWebPage() {
 
     val scrollState = rememberScrollState()
 
-    var isLoading by remember { mutableStateOf(false) }
 
     val scope = rememberCoroutineScope()
 
     val onClick = {
         scope.launch {
-            isLoading = true
-//            var data = ""
-//            CoroutineScope(Dispatchers.IO).async{
-//                data = loadNetwork(URL(text))
-//            }.await()
+            Log.i("thread", Thread.currentThread().name)
+            /*var data = ""
+            CoroutineScope(Dispatchers.IO).launch {  //block 상태가 되지 않으므로 webSource에 빈 데이터가 들어감
+                data = loadNetwork(URL(text))
+            }*/
+            /*var data = ""
+            CoroutineScope(Dispatchers.IO).async{
+                data = loadNetwork(URL(text))
+            }.await()*/  //모두 다운로드 될 때까지 block 상태가 됨
+
             var data = withContext(Dispatchers.IO) {
+                Log.i("thread", Thread.currentThread().name)
                 loadNetwork(URL(text)) //network 접속하는 함수. main thread에서는 작동 안 함
             }
             webSource = data
-            isLoading = false
         }
     }
 
-    val pullRefreshState = rememberPullRefreshState( //material 최신 버전 추가
-        refreshing = isLoading,
-        onRefresh = { onClick() }
-    )
+
 
     Column(
         modifier = Modifier
@@ -100,7 +102,6 @@ fun FetchWebPage() {
             modifier = Modifier
                 .weight(1f)
                 .fillMaxWidth()
-                .pullRefresh(pullRefreshState)
                 .verticalScroll(scrollState)
         ) {
             if(webSource.isNotEmpty()) {
@@ -111,11 +112,7 @@ fun FetchWebPage() {
                         .sizeIn(maxHeight = 900.dp)
                 )
             }
-            PullRefreshIndicator(
-                refreshing = isLoading,
-                state = pullRefreshState,
-                modifier = Modifier.align(Alignment.TopCenter)
-            )
+
         }
     }
 }

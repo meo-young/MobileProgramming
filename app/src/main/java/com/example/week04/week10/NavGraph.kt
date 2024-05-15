@@ -11,6 +11,7 @@ import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
+import androidx.navigation.navDeepLink
 
 @Composable
 fun NavGraph(navController: NavHostController) {
@@ -24,7 +25,13 @@ fun NavGraph(navController: NavHostController) {
             }
         }
         composable(
-            route = "Msg?msg={msg}",           
+            route = "Msg?msg={msg}", //내부용 링크
+            deepLinks = listOf( //외부용 링크
+                navDeepLink {
+                    uriPattern = "myapp://greenjoahome.com/{msg}"
+                    action = Intent.ACTION_VIEW
+                }
+            ),
             arguments = listOf(
                 navArgument("msg") {
                     type = NavType.StringType

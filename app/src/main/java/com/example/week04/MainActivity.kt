@@ -55,6 +55,7 @@ import com.example.week04.week10.getInstalledApps
 import com.example.week04.week11.example01.WebViewScreen
 import com.example.week04.week11.example02.FetchWebPage
 import com.example.week04.week11.example03.MainScreen03
+import com.example.week04.week11.example04.MainScreen04
 import com.example.week07.example1.HomeScreen1
 import com.example.week07.example1.NavGraph1
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
@@ -95,7 +96,8 @@ class MainActivity : ComponentActivity() {
 
                         //WebViewScreen()
                         //FetchWebPage()
-                        MainScreen03(url = "https://news.daum.net")
+                        //MainScreen03(url = "https://news.daum.net")
+                        MainScreen04(url = "https://fs.jtbc.co.kr/RSS/culture.xml")
                     }
 
                 }

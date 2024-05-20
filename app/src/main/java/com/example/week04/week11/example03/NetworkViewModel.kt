@@ -26,7 +26,7 @@ class NewsViewModel : ViewModel() {
                 _newsList.value = fetchedNews
             } catch (e: Exception) {
                 Log.e("error", "fetch 관련 오류 발생", e)
-            } finally {
+            } finally { //예외가 발생하던 안 하던 실행이 됨
                 _isLoading.value = false
             }
         }

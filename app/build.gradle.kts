@@ -2,6 +2,7 @@ plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("kotlin-parcelize")
+    kotlin("kapt")
 }
 
 android {
@@ -48,6 +49,10 @@ android {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
+    kapt {
+        correctErrorTypes = true
+    }
+
 }
 
 dependencies {
@@ -61,15 +66,16 @@ dependencies {
     implementation("androidx.compose.material3:material3")
     implementation("io.coil-kt:coil-compose:2.6.0")
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.0-alpha03")
-    implementation("androidx.navigation:navigation-compose:2.8.0-alpha06")
     implementation("androidx.navigation:navigation-compose:2.8.0-alpha07")
     implementation("androidx.compose.material:material-icons-extended:1.7.0-alpha07")
     implementation("com.google.accompanist:accompanist-permissions:0.35.0-alpha")
     implementation("androidx.compose.material:material:1.7.0-alpha08")
-    implementation("org.jsoup:jsoup:1.17.2")
     implementation("androidx.compose.material:material:1.7.0-beta01")
     implementation("androidx.room:room-ktx:2.7.0-alpha02")
-    implementation("androidx.room:room-compiler:2.7.0-alpha02")
+    kapt("androidx.room:room-compiler:2.7.0-alpha02")
+    implementation("com.squareup.retrofit2:retrofit:2.11.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.11.0")
+    implementation("com.google.devtools.ksp:com.google.devtools.ksp.gradle.plugin:2.0.0-1.0.21")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")

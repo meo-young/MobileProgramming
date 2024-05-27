@@ -1,6 +1,7 @@
 package com.example.week04
 
 import android.app.Application
+import android.content.ClipData
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
@@ -23,6 +24,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -52,10 +54,13 @@ import com.example.week04.week10.InstalledAppsList
 import com.example.week04.week10.NavGraph
 import com.example.week04.week10.NotificationApp
 import com.example.week04.week10.getInstalledApps
-import com.example.week04.week11.example01.WebViewScreen
-import com.example.week04.week11.example02.FetchWebPage
-import com.example.week04.week11.example03.MainScreen03
-import com.example.week04.week11.example04.MainScreen04
+import com.example.week04.week12.roomDB.Item
+import com.example.week04.week12.roomDB.ItemDatabase
+import com.example.week04.week12.screen.InputScreen
+import com.example.week04.week12.screen.ItemList
+import com.example.week04.week12.viewmodel.ItemViewModel
+import com.example.week04.week12.viewmodel.ItemViewModelFactory
+import com.example.week04.week12.viewmodel.Repository
 import com.example.week07.example1.HomeScreen1
 import com.example.week07.example1.NavGraph1
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
@@ -97,7 +102,8 @@ class MainActivity : ComponentActivity() {
                         //WebViewScreen()
                         //FetchWebPage()
                         //MainScreen03(url = "https://news.daum.net")
-                        MainScreen04(url = "https://fs.jtbc.co.kr/RSS/culture.xml")
+                        //MainScreen04(url = "https://fs.jtbc.co.kr/RSS/culture.xml")
+                        Week12Screen()
                     }
 
                 }
@@ -105,6 +111,32 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
+
+@Composable
+fun Week12Screen(){
+    val context = LocalContext.current
+    val itemdb = ItemDatabase.getDatabase(context)
+    val viewModel : ItemViewModel = viewModel(factory = ItemViewModelFactory(Repository(itemdb)))
+    var selectedItem by remember{
+        mutableStateOf<Item?>(null)
+    }
+    val onClick = {item: Item -> selectedItem = item}
+    val itemList by viewModel.itemList.collectAsState(initial = emptyList())
+    Column(
+        modifier = Modifier.fillMaxSize()
+    ) {
+        InputScreen(viewModel = viewModel, selectedItem = selectedItem)
+        ItemList(list = itemList, onClick = onClick)
+    }
+}
+
+
+
+
+
+
+
+
 
 @OptIn(ExperimentalPermissionsApi::class)
 @Composable

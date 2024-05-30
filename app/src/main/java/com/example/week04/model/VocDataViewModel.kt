@@ -16,13 +16,11 @@ class VocDataViewModel(private val application: Application) : AndroidViewModel(
     }
 
     private fun readWordFile():MutableList<VocData>{
-        Log.d("visit", "1")
         val context = application.applicationContext
         val scan = Scanner(context.resources.openRawResource(R.raw.word))
         val wordList = mutableListOf<VocData>()
         while(scan.hasNextLine()){
             val word = scan.nextLine()
-            Log.d("word2", word)
             val meaning = scan.nextLine()
             wordList.add(VocData(word, meaning))
         }

@@ -1,6 +1,5 @@
 package com.example.week04
 
-import android.app.Application
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
@@ -12,7 +11,6 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.compose.setContent
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -31,40 +29,15 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.core.content.ContextCompat.startActivity
-import androidx.lifecycle.viewmodel.compose.viewModel
-import androidx.navigation.compose.rememberNavController
-import com.example.lazycomposable.screen.MainSceen2
-import com.example.week04.component.VocList
-import com.example.week04.example2.LoginNavGraph
-import com.example.week04.example4.ScaffoldEample
-import com.example.week04.example6.MainScreen
-import com.example.week04.model.VocDataViewModel
-import com.example.week04.model.VocDataViewModel2
-import com.example.week04.practice.PracticeNavi
-import com.example.week04.screen.MainSceen1
-import com.example.week04.screen.MainScreen7
-import com.example.week04.screen.RandomColorButton
-import com.example.week04.screen.RandomColorButton2
 import com.example.week04.ui.theme.Week04Theme
-import com.example.week04.week03.components.AnnotatedClickableText
-import com.example.week04.week10.InstalledAppsList
-import com.example.week04.week10.NavGraph
-import com.example.week04.week10.NotificationApp
-import com.example.week04.week10.getInstalledApps
-import com.example.week04.week11.example01.WebViewScreen
-import com.example.week04.week11.example02.FetchWebPage
-import com.example.week07.example1.HomeScreen1
-import com.example.week07.example1.NavGraph1
+import com.example.week04.week11.example03.MainScreen03
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
 import com.google.accompanist.permissions.isGranted
 import com.google.accompanist.permissions.rememberMultiplePermissionsState
 import com.google.accompanist.permissions.rememberPermissionState
 import com.google.accompanist.permissions.shouldShowRationale
-import java.io.File
-import java.util.Scanner
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -103,8 +76,9 @@ class MainActivity : ComponentActivity() {
                         /*val navController = rememberNavController() 11주차 pending intent, deeplink
                         NavGraph(navController = navController)*/
 
-                        WebViewScreen()
+                        //WebViewScreen()
                         //FetchWebPage()
+                        MainScreen03(url = "https://news.daum.net")
                     }
 
                 }
@@ -171,12 +145,9 @@ fun ShowIntent2() {
     }
     val requestPermissionLauncher =
         rememberLauncherForActivityResult(contract = ActivityResultContracts.RequestPermission()) { isGranted ->
-            if (isGranted)
-                makeCall(context)
-            else {
+            if (!isGranted)
                 if(!permissionState.status.shouldShowRationale)
                     showDialog = true
-            }
         }
     LaunchedEffect(key1 = permissionState) {
         if(!permissionState.status.isGranted && !permissionState.status.shouldShowRationale) // 승인과 거부가 이뤄지지 않은 상태

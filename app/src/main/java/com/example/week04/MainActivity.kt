@@ -1,5 +1,8 @@
 package com.example.week04
 
+
+import android.app.Application
+import android.content.ClipData
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
@@ -22,6 +25,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -31,8 +35,21 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.core.content.ContextCompat.startActivity
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.week04.ui.theme.Week04Theme
-import com.example.week04.week11.example03.MainScreen03
+import com.example.week04.week03.components.AnnotatedClickableText
+import com.example.week04.week10.InstalledAppsList
+import com.example.week04.week10.NavGraph
+import com.example.week04.week10.getInstalledApps
+import com.example.week04.week12.roomDB.Item
+import com.example.week04.week12.roomDB.ItemDatabase
+import com.example.week04.week12.screen.InputScreen
+import com.example.week04.week12.screen.ItemList
+import com.example.week04.week12.viewmodel.ItemViewModel
+import com.example.week04.week12.viewmodel.ItemViewModelFactory
+import com.example.week04.week12.viewmodel.Repository
+import com.example.week07.example1.HomeScreen1
+import com.example.week07.example1.NavGraph1
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
 import com.google.accompanist.permissions.isGranted
 import com.google.accompanist.permissions.rememberMultiplePermissionsState
@@ -50,7 +67,7 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
                     Column {
-                        //Text("202011255 김대영")
+                        Text("202011255 김대영")
                         /*Image(
                             painter = painterResource(id = R.drawable.aiku1),
                             contentDescription = null,
@@ -78,7 +95,9 @@ class MainActivity : ComponentActivity() {
 
                         //WebViewScreen()
                         //FetchWebPage()
-                        MainScreen03(url = "https://news.daum.net")
+                        //MainScreen03(url = "https://news.daum.net")
+                        //MainScreen04(url = "https://fs.jtbc.co.kr/RSS/culture.xml")
+                        Week12Screen()
                     }
 
                 }
@@ -86,6 +105,32 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
+
+@Composable
+fun Week12Screen(){
+    val context = LocalContext.current
+    val itemdb = ItemDatabase.getDatabase(context)
+    val viewModel : ItemViewModel = viewModel(factory = ItemViewModelFactory(Repository(itemdb)))
+    var selectedItem by remember{
+        mutableStateOf<Item?>(null)
+    }
+    val onClick = {item: Item -> selectedItem = item}
+    val itemList by viewModel.itemList.collectAsState(initial = emptyList())
+    Column(
+        modifier = Modifier.fillMaxSize()
+    ) {
+        InputScreen(viewModel = viewModel, selectedItem = selectedItem)
+        ItemList(list = itemList, onClick = onClick)
+    }
+}
+
+
+
+
+
+
+
+
 
 @OptIn(ExperimentalPermissionsApi::class)
 @Composable
